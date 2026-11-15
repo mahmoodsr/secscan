@@ -1,0 +1,10 @@
+{
+  "authentication/validate": {"valid": true},
+  "task_pending": {"task": {"status": "PENDING"}},
+  "task_success": {"task": {"status": "SUCCESS", "analysisId": "replay-analysis"}},
+  "gate_ok": {"projectStatus": {"status": "OK", "conditions": [{"metricKey": "security_rating", "status": "OK", "actualValue": "1", "errorThreshold": "1"}]}},
+  "gate_error": {"projectStatus": {"status": "ERROR", "conditions": [{"metricKey": "reliability_rating", "status": "ERROR", "actualValue": "2", "errorThreshold": "1"}]}},
+  "issues_findings": {"paging": {"total": 1}, "issues": [{"key": "issue-js-1", "rule": "javascript:S2259", "message": "This value is undefined.", "severity": "MAJOR", "type": "BUG", "line": 5}]},
+  "issues_fixed": {"paging": {"total": 0}, "issues": []},
+  "hotspots/search": {"paging": {"total": 0}, "hotspots": []}
+}

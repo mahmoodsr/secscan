@@ -1,0 +1,90 @@
+timeout_minutes: 15
+trivy_cache_max_hours: 48
+max_file_bytes: 10485760
+exclusions:
+  - .git
+  - .hg
+  - .svn
+  - scan-reports
+  - .scannerwork
+  - .sonarqube
+  - node_modules
+  - vendor
+  - .venv
+  - .scan-tools
+  - venv
+  - bin
+  - obj
+  - target
+  - build
+  - dist
+  - __pycache__
+  - .pytest_cache
+  - .cache
+  - .gradle
+  - .terraform
+  - .idea
+  - .vscode
+  - '*.min.js'
+  - '*.min.css'
+  - '*.bundle.js'
+  - '*.map'
+  - '*.png'
+  - '*.jpg'
+  - '*.jpeg'
+  - '*.gif'
+  - '*.mp4'
+  - '*.zip'
+  - '*.pdf'
+  - '*.exe'
+  - '*.dll'
+  - '*.jar'
+  - '*.class'
+  - '*.lockb'
+  - .scan-config.yml
+  - .gitleaks.toml
+  - .gitleaksignore
+  - .semgrepignore
+  - sonar-project.properties
+manifests:
+  - package.json
+  - package-lock.json
+  - npm-shrinkwrap.json
+  - yarn.lock
+  - pnpm-lock.yaml
+  - bun.lock
+  - bun.lockb
+  - pom.xml
+  - gradle.lockfile
+  - '*.lockfile'
+  - '*.gradle'
+  - '*.gradle.kts'
+  - go.sum
+  - go.mod
+  - 'requirements*.txt'
+  - pyproject.toml
+  - poetry.lock
+  - uv.lock
+  - Pipfile
+  - Pipfile.lock
+  - composer.json
+  - composer.lock
+  - packages.lock.json
+  - packages.config
+  - '*.csproj'
+  - '*.fsproj'
+  - '*.vbproj'
+  - Gemfile.lock
+  - Cargo.lock
+  - Dockerfile
+  - 'Dockerfile.*'
+semgrep:
+  packs: [p/default, p/security-audit]
+  language_packs:
+    python: p/python
+    javascript: p/javascript
+    typescript: p/typescript
+    java: p/java
+    dotnet: p/csharp
+    php: p/php
+    go: p/golang

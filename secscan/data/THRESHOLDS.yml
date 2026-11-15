@@ -1,0 +1,18 @@
+version: '1-proposed'
+blocking:
+  gitleaks:
+    secret: [Critical]
+  semgrep:
+    'code issue': [High]
+  trivy:
+    vulnerability:
+      severities: [Critical, High]
+      requires_fix: [High]
+    misconfiguration: [Critical, High]
+  sonar:
+    gate: ERROR
+quality_gate:
+  vulnerabilities: 0
+  security_rating: A
+  security_hotspots_reviewed_percent: 100
+  reliability_rating: A

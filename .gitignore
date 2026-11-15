@@ -1,0 +1,14 @@
+.venv/
+.scan-tools/
+__pycache__/
+*.egg-info/
+build/
+dist/
+scan-reports/
+node_modules/
+playwright-report/
+test-results/
+.DS_Store
+.env
+.env.*
+/tmp/pdfs/

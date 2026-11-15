@@ -1,0 +1,3 @@
+FROM alpine:3.23
+HEALTHCHECK CMD ["/bin/true"]
+USER 65532:65532

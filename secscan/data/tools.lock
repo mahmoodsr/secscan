@@ -1,0 +1,61 @@
+python:
+  minimum: '3.9'
+  pinned: '3.13.2'
+  macos: brew install python
+  windows: winget install -e --id Python.Python.3.13
+semgrep:
+  pinned: '1.146.0'
+  version: [--version]
+  macos: pipx install semgrep==1.146.0
+  windows: pipx install semgrep==1.146.0
+gitleaks:
+  pinned: '8.24.2'
+  version: [version]
+  macos: brew install gitleaks
+  windows: winget install -e --id Gitleaks.Gitleaks --version 8.24.2
+trivy:
+  pinned: '0.76.1'
+  version: [--version]
+  macos: brew install trivy
+  windows: winget install -e --id AquaSecurity.Trivy
+sonar:
+  executable: sonar-scanner
+  pinned: '7.2.0.5079'
+  version: [--version]
+  macos: brew install sonar-scanner
+  windows: >-
+    Invoke-WebRequest 'https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.2.0.5079-windows-x64.zip' -OutFile sonar-scanner.zip;
+    Expand-Archive sonar-scanner.zip -DestinationPath "$env:LOCALAPPDATA/secscan-tools";
+    $env:Path += ";$env:LOCALAPPDATA/secscan-tools/sonar-scanner-7.2.0.5079-windows-x64/bin"
+sonar_dotnet:
+  executable: dotnet
+  pinned: '11.0.0.126294'
+  macos: dotnet tool install --global dotnet-sonarscanner --version 11.0.0.126294
+  windows: dotnet tool install --global dotnet-sonarscanner --version 11.0.0.126294
+java:
+  version: [--version]
+  minimum: '17'
+  pinned: '17'
+  macos: brew install openjdk@17
+  windows: winget install -e --id EclipseAdoptium.Temurin.17.JDK
+git:
+  pinned: '2.48.1'
+  version: [--version]
+  macos: brew install git
+  windows: winget install -e --id Git.Git
+dependencies:
+  PyYAML: '6.0.3'
+  jsonschema_test: '4.26.0'
+sonar_server:
+  pinned: '26.10.0.133078-community'
+postgres_server:
+  pinned: '16.10'
+dashboard:
+  fastapi: '0.115.12'
+  uvicorn: '0.34.3'
+  keyring: '25.6.0'
+  react: '19.1.0'
+  vite: '6.4.1'
+  outfit: '5.2.8'
+  lucide_react: '0.468.0'
+  playwright: '1.56.1'

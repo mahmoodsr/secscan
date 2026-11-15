@@ -1,0 +1,17 @@
+# Copy to .scan-config.yml at the project root. SONAR_HOST_URL takes precedence.
+sonar_url: https://sonar.example.internal
+timeout_minutes: 15
+project_path: hash
+record_developer: true
+exclusions:
+  - fixtures/generated/**
+# Paths must be inside the project. Rule files replace remote packs by default.
+# semgrep_rules: security/rules
+# semgrep_rule_mode: extend
+allowlist: []
+# - tool: trivy
+#   rule: CVE-2024-0000
+#   file: package-lock.json
+#   reason: Temporary approved exception
+#   approver: Tech Lead
+#   expiry: '2027-01-01'

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>findings — Security scan</title>
+<style>
+:root{color-scheme:light dark;font:16px/1.55 system-ui,sans-serif}
+body{margin:0 auto;padding:2rem;max-width:68rem}
+h1{font-size:2.5rem;margin:.5rem 0}
+section{margin:2rem 0}
+.banner{border:1px solid;border-radius:.75rem;padding:.75rem 1rem;font-weight:700}
+.PASS{background:#133b2c;color:#b9f3cf}.FAIL{background:#63272d;color:#fff0ee}
+.INCOMPLETE{background:#4b3916;color:#fff1bb}
+.scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left}
+th,td{padding:.6rem;border-bottom:1px solid GrayText;vertical-align:top}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+</style></head><body>
+<header><h1>findings</h1><p>2026-11-14T20:59:33.664+00:00 · not a git repository</p>
+<p class="banner FAIL">FAIL · exit 1</p>
+<p>Engine 0.1.0 · thresholds 1-proposed</p>
+<p>Quality Gate <strong>OK</strong> <a href="http://127.0.0.1:9000/dashboard?id=findings">Open project in SonarQube</a></p></header>
+<main><section><h2>Tool results</h2><div class=scroll><table><thead><tr><th>Tool</th><th>Status</th><th>Reason</th><th>Critical</th><th>High</th><th>Medium</th><th>Low</th><th>Info</th></tr></thead><tbody><tr><td>semgrep</td><td>FAIL</td><td>blocking findings</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>gitleaks</td><td>FAIL</td><td>blocking findings</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>trivy</td><td>FAIL</td><td>blocking findings</td><td>0</td><td>9</td><td>3</td><td>0</td><td>0</td></tr><tr><td>sonar</td><td>PASS</td><td></td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></tbody></table></div></section><section><h2>Severity counts</h2><div class=scroll><table><thead><tr><th>Severity</th><th>Count</th></tr></thead><tbody><tr><td>Critical</td><td>2</td></tr><tr><td>High</td><td>10</td></tr><tr><td>Medium</td><td>4</td></tr><tr><td>Low</td><td>1</td></tr><tr><td>Info</td><td>0</td></tr></tbody></table></div></section><section><h2>Issues requiring fixes</h2><div class=scroll><table><thead><tr><th>Tool</th><th>Severity</th><th>Rule</th><th>File and line</th><th>Fix</th></tr></thead><tbody><tr><td>gitleaks</td><td>Critical</td><td>github-pat</td><td>app.js:1</td><td>Revoke or rotate the credential, then remove it from code and history.</td></tr><tr><td>semgrep</td><td>High</td><td>demo-python-eval</td><td>app.py:2</td><td>Follow the remediation in the rule documentation.</td></tr><tr><td>trivy</td><td>High</td><td>DS-0002</td><td>Dockerfile:3</td><td>Add &#x27;USER &lt;non root user name&gt;&#x27; line to the Dockerfile</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2021-33503</td><td>requirements.txt</td><td>Upgrade urllib3 to 1.26.5</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2023-43804</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.0.6, 1.26.17</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2025-66418</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.6.0</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2025-66471</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.6.0</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2026-21441</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.6.3</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2026-44431</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.7.0</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2026-97687</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.8.0</td></tr><tr><td>trivy</td><td>High</td><td>CVE-2026-97689</td><td>requirements.txt</td><td>Upgrade urllib3 to 2.8.0</td></tr></tbody></table></div></section><section><h2>Quality Gate conditions</h2><div class=scroll><table><thead><tr><th>Metric</th><th>Status</th><th>Actual</th><th>Threshold</th></tr></thead><tbody><tr><td>new_violations</td><td>OK</td><td>0</td><td>0</td></tr></tbody></table></div></section><section><h2>Coverage notes</h2><pre>Symlinks are excluded from current-file scans.
+Reduced Java analysis: compiled classes are missing; run with --build for compiler-backed analysis.
+Reduced Java analysis: compiled classes are missing; Java files are excluded from SonarQube.</pre></section><section><h2>Configuration changes</h2><pre>{
+  &quot;semgrep_rules&quot;: &quot;rules&quot;,
+  &quot;exclusions&quot;: [
+    &quot;rules&quot;,
+    &quot;scan.yml&quot;
+  ],
+  &quot;record_developer&quot;: false,
+  &quot;config_file&quot;: &quot;scan.yml&quot;
+}</pre></section><section><h2>Exceptions used</h2><pre>[]</pre></section><section><h2>Expired exceptions</h2><pre>[]</pre></section><section><h2>Tool versions</h2><pre>{
+  &quot;python&quot;: &quot;3.14.0&quot;,
+  &quot;semgrep&quot;: &quot;1.146.0&quot;,
+  &quot;gitleaks&quot;: &quot;8.24.2&quot;,
+  &quot;trivy&quot;: &quot;0.76.1&quot;,
+  &quot;sonar&quot;: &quot;7.2.0.5079&quot;,
+  &quot;git&quot;: &quot;2.50.1&quot;
+}</pre></section></main></body></html>

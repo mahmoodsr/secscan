@@ -1,0 +1,8 @@
+rules:
+  - id: demo-python-eval
+    languages: [python]
+    message: Parse the expected input format explicitly instead of evaluating Python code.
+    severity: ERROR
+    pattern: eval(...)
+    metadata:
+      title: Dynamic evaluation of input

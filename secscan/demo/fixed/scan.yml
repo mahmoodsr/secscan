@@ -1,0 +1,3 @@
+semgrep_rules: rules
+exclusions: [rules, scan.yml]
+record_developer: false

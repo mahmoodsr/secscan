@@ -1,0 +1,8 @@
+# All listed rules must be found. Trivy advisories can grow as its database updates.
+findings:
+  - {tool: semgrep, rule: demo-python-eval, file: app.py}
+  - {tool: gitleaks, rule: github-pat, file: app.js}
+  - {tool: trivy, category: vulnerability, rule: CVE-2023-43804, file: requirements.txt}
+  - {tool: trivy, category: misconfiguration, rule: DS-0002, file: Dockerfile}
+  - {tool: sonar, rule: javascript:S2259, file: app.js}
+fixed: []

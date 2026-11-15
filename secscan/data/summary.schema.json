@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:secscan:summary:1",
+  "title": "secscan scan summary",
+  "type": "object",
+  "required": ["schema_version", "scan_id", "project_name", "project_path", "started_at", "ended_at",
+    "duration_seconds", "engine_version", "developer", "git", "tool_versions", "pinned_versions",
+    "tools", "quality_gate", "sonar_dashboard_url", "overall_status", "exit_code", "policy_exit_code",
+    "severity_counts", "findings", "blocking_findings", "allowlist_used", "allowlist_expired",
+    "configuration_changes", "coverage_notes", "thresholds_version"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "scan_id": {"type": "string", "format": "uuid"},
+    "project_name": {"type": "string"},
+    "project_path": {"type": "string", "pattern": "^(\\.|[a-f0-9]{64})$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "ended_at": {"type": "string", "format": "date-time"},
+    "duration_seconds": {"type": "number", "minimum": 0},
+    "engine_version": {"type": "string"},
+    "developer": {"type": ["string", "null"]},
+    "git": {
+      "type": "object", "required": ["status", "commit", "branch", "content_timestamp"],
+      "properties": {
+        "status": {"enum": ["git repository", "not a git repository"]},
+        "commit": {"type": "string"},
+        "branch": {"type": "string"},
+        "content_timestamp": {"type": ["string", "null"]}
+      }
+    },
+    "tool_versions": {"type": "object", "additionalProperties": {"type": ["string", "null"]}},
+    "pinned_versions": {"type": "object", "additionalProperties": {"type": "string"}},
+    "tools": {
+      "type": "object", "required": ["semgrep", "gitleaks", "trivy", "sonar"],
+      "additionalProperties": {"$ref": "#/$defs/tool"}
+    },
+    "quality_gate": {
+      "type": "object", "required": ["status", "conditions"],
+      "properties": {"status": {"enum": ["OK", "ERROR", "UNAVAILABLE"]}, "conditions": {"type": "array"}}
+    },
+    "sonar_dashboard_url": {"type": ["string", "null"]},
+    "overall_status": {"enum": ["PASS", "FAIL", "INCOMPLETE"]},
+    "exit_code": {"enum": [0, 1, 2, 3]},
+    "policy_exit_code": {"enum": [0, 1, 2, 3]},
+    "severity_counts": {"$ref": "#/$defs/counts"},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "blocking_findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "allowlist_used": {"type": "array"},
+    "allowlist_expired": {"type": "array"},
+    "configuration_changes": {"type": "object"},
+    "coverage_notes": {"type": "array", "items": {"type": "string"}},
+    "thresholds_version": {"type": "string"}
+  },
+  "$defs": {
+    "counts": {
+      "type": "object", "required": ["Critical", "High", "Medium", "Low", "Info"],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "tool": {
+      "type": "object", "required": ["status", "reason", "counts"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL", "ERROR", "SKIPPED"]},
+        "reason": {"type": "string"},
+        "counts": {"$ref": "#/$defs/counts"}
+      }
+    },
+    "finding": {
+      "type": "object", "required": ["id", "tool", "rule", "title", "severity", "original_severity",
+        "category", "file", "line", "description", "fix", "reference", "allowlisted", "blocking"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-f0-9]{24}$"},
+        "tool": {"enum": ["semgrep", "gitleaks", "trivy", "sonar"]},
+        "rule": {"type": "string"}, "title": {"type": "string"},
+        "severity": {"enum": ["Critical", "High", "Medium", "Low", "Info"]},
+        "original_severity": {"type": "string"},
+        "category": {"enum": ["secret", "vulnerability", "code issue", "misconfiguration", "hotspot"]},
+        "file": {"type": "string"}, "line": {"type": ["integer", "null"], "minimum": 1},
+        "description": {"type": "string"}, "fix": {"type": "string"}, "reference": {"type": "string"},
+        "allowlisted": {"type": "boolean"}, "blocking": {"type": "boolean"}
+      }
+    }
+  }
+}

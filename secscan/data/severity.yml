@@ -1,0 +1,4 @@
+sonar: {BLOCKER: Critical, CRITICAL: High, MAJOR: Medium, MINOR: Low, INFO: Info}
+semgrep: {ERROR: High, WARNING: Medium, INFO: Low}
+trivy: {CRITICAL: Critical, HIGH: High, MEDIUM: Medium, LOW: Low, UNKNOWN: Info}
+gitleaks: {'*': Critical}
